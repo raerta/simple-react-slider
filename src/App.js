@@ -62,13 +62,23 @@ function App() {
     return newArr;
   }
 
-  const handleSlider = (logic) => {
+  const handleNextSlider = (logic) => {
     setCount(logic);
     setData(move(data.length - 1, 0, data));
     setAnimation("fadeInRight");
     setUnActiveAnimation("fadeInLeft");
     setActiveAnimation("easeIn");
   };
+
+  const handlePrevSlider = (logic) => {
+    setCount(logic);
+    setData(move(0, data.length - 1, data));
+    setAnimation("fadeInRight");
+    setUnActiveAnimation("fadeInLeft");
+    setActiveAnimation("easeIn");
+  };
+
+
 
   return (
     <section className="slider-container">
@@ -134,7 +144,7 @@ function App() {
           <div className="buttons-container">
             <button
               disabled={animation !== ""}
-              onClick={() => handleSlider(prevArrowLogic)}
+              onClick={() => handlePrevSlider(prevArrowLogic)}
             >
               <svg
                 width="21"
@@ -153,7 +163,7 @@ function App() {
             </button>
             <button
               disabled={animation !== ""}
-              onClick={() => handleSlider(nextArrowLogic)}
+              onClick={() => handleNextSlider(nextArrowLogic)}
             >
               <svg
                 width="21"
